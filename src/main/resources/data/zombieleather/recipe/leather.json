@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "zombieleather:smoked_rotten_flesh",
+    "zombieleather:smoked_rotten_flesh",
+    "zombieleather:smoked_rotten_flesh",
+    "zombieleather:smoked_rotten_flesh"
+  ],
+  "result": {
+    "id": "minecraft:leather",
+    "count": 1
+  }
+}

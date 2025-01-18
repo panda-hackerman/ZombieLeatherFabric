@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "zombieleather",
+  "version": "${version}",
+  "name": "Zombie Leather",
+  "description": "Makes glow berries useful",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/zombieleather/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "dev.michaud.zombieleather.ZombieLeather"
+    ]
+  },
+  "mixins": [
+    "zombieleather.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
