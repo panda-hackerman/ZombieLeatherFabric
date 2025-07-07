@@ -2,8 +2,10 @@ package dev.michaud.zombieleather;
 
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -27,13 +29,10 @@ public class ZombieLeather implements ModInitializer {
 
   @Override
   public void onInitialize() {
+
     PolymerResourcePackUtils.addModAssets(MOD_ID);
-    registerTrades();
 
-    LOGGER.info("Zombie Leather initialized !");
-  }
-
-  private void registerTrades() {
+    // Register trades
     TradeOfferHelper.registerVillagerOffers(VillagerProfession.LEATHERWORKER, 2,
         factories -> factories.add((entity, random) -> new TradeOffer(
             new TradedItem(SMOKED_ROTTEN_FLESH, 16),
@@ -41,5 +40,12 @@ public class ZombieLeather implements ModInitializer {
             12, 20, 0.05f
         ))
     );
+
+    // Add to creative menu
+    ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register((itemGroup) -> {
+      itemGroup.addAfter(Items.RABBIT_HIDE, SMOKED_ROTTEN_FLESH);
+    });
+
+    LOGGER.info("Zombie Leather initialized !");
   }
 }
